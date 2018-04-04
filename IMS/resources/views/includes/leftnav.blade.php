@@ -39,32 +39,81 @@
         </li>
         <li class="bold">
             <a href="index.html" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Dashboard</a>
+                <i class="mdi-action-dashboard"></i> Dashboard
+            </a>
         </li>
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-action-dashboard"></i> Customer
+            </a>
+        </li>
+
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-action-dashboard"></i> Supplier
+            </a>
+        </li>
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-action-dashboard"></i> Product
+            </a>
+        </li>
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-action-dashboard"></i> Stocks
+            </a>
+        </li>
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-action-dashboard"></i> Sales
+            </a>
+        </li>
+        
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
                 <li class="bold">
                     <a class="collapsible-header waves-effect waves-cyan">
-                        <i class="mdi-action-view-carousel"></i> Layouts</a>
+                        <i class="mdi-action-view-carousel"></i> Payments</a>
                     <div class="collapsible-body">
                         <ul>
                             <li>
-                                <a href="layout-fullscreen.html">Full Screen</a>
+                                <a href="#">Pending</a>
                             </li>
                             <li>
-                                <a href="layout-horizontal-menu.html">Horizontal Menu</a>
+                                <a href="#">OutStanding</a>
+                            </li>
+                            <li>
+                                <a href="#">Paid</a>
                             </li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </li>
-        <li class="bold">
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold">
+                    <a class="collapsible-header waves-effect waves-cyan">
+                        <i class="mdi-action-view-carousel"></i> Reports</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a href="#">Profit &amp; Loss</a>
+                            </li>
+                            <li>
+                                <a href="#">Sotck in-out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <!--<li class="bold">
             <a href="app-email.html" class="waves-effect waves-cyan">
                 <i class="mdi-communication-email"></i> Mailbox
                 <span class="new badge">4</span>
             </a>
-        </li>
+        </li>-->
         
         
     </ul>
