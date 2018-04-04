@@ -21,6 +21,12 @@
   <link href="{{url('assets/')}}/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- Custome CSS-->    
   <link href="{{url('assets/')}}/css/custom/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  @if (isset($css))
+      @foreach ($css as $item)
+        <link href="{{url('assets/')}}/css/{{$item}}" type="text/css" rel="stylesheet" media="screen,projection">
+      @endforeach
+  @endif
+  
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="{{url('assets/')}}/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
