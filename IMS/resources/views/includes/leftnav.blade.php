@@ -3,37 +3,20 @@
     <ul id="slide-out" class="side-nav fixed leftside-navigation">
         <li class="user-details cyan darken-2">
             <div class="row">
-                <div class="col col s4 m4 l4">
-                    <img src="{{url('assets/')}}/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
-                </div>
-                <div class="col col s8 m8 l8">
+                <div class="col col s12 m12 l12">
                     <ul id="profile-dropdown" class="dropdown-content">
-                        <li>
-                            <a href="#">
-                                <i class="mdi-action-face-unlock"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="mdi-action-settings"></i> Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="mdi-communication-live-help"></i> Help</a>
-                        </li>
-                        <li class="divider"></li>
                         <li>
                             <a href="#">
                                 <i class="mdi-action-lock-outline"></i> Lock</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                         </li>
                     </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe
-                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">{{ $name }}<i class="mdi-navigation-arrow-drop-down right"></i>
                     </a>
-                    <p class="user-roal">Administrator</p>
                 </div>
             </div>
         </li>
@@ -42,33 +25,42 @@
                 <i class="mdi-action-dashboard"></i> Dashboard
             </a>
         </li>
+        @if ($permission['customer'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i> Customer
             </a>
         </li>
-
+        @endif
+        @if ($permission['supplier'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i> Supplier
             </a>
         </li>
+        @endif
+        @if ($permission['product'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i> Product
             </a>
         </li>
+        @endif
+        @if ($permission['stocks'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i> Stocks
             </a>
         </li>
+        @endif
+        @if ($permission['sales'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i> Sales
             </a>
         </li>
-        
+        @endif
+        @if ($permission['payment'] == 1)
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
                 <li class="bold">
@@ -90,6 +82,8 @@
                 </li>
             </ul>
         </li>
+        @endif
+        @if ($permission['report'] == 1)
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
                 <li class="bold">
@@ -108,6 +102,7 @@
                 </li>
             </ul>
         </li>
+        @endif
         <!--<li class="bold">
             <a href="app-email.html" class="waves-effect waves-cyan">
                 <i class="mdi-communication-email"></i> Mailbox
