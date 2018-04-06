@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +20,11 @@
             <h4>Register</h4>
           </div>
         </div>
-        @if ($errors->has('email'))
+        @if ($errors->any())
         <div id="card-alert" class="card red">
             <div class="card-content white-text">
-              @foreach ($errors as $item)
-              <p>{{ $item }}</p>
-              <br>
+              @foreach ($errors->all() as $error)
+              <p>{{ $error }}</p>
               @endforeach
             </div>
         </div>
