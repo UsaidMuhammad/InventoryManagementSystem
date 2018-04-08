@@ -15,6 +15,7 @@ class DashboardController extends Controller
     
     public function index()
     {
+        // adds permission to Session 
         $this->addPermission();
         $data = [
             'pagetitle' => 'Dashboard',
