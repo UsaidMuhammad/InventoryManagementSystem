@@ -39,6 +39,6 @@ class ForgotPasswordController extends Controller
                 'layouts/page-center.css',
             ],
         ];
-        return view('auth.register', $data);
+        return view('auth.passwords.email', $data);
     }
 }
