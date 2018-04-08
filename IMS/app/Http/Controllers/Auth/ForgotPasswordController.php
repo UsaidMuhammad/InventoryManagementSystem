@@ -29,4 +29,16 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    //overrite default function
+    public function showLinkRequestForm()
+    {
+        $data = [
+            'pagetitle' => 'Forgot Password',
+            'css' => [
+                'layouts/page-center.css',
+            ],
+        ];
+        return view('auth.register', $data);
+    }
 }
