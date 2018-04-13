@@ -4,7 +4,7 @@
 <?php
 $arr = [
   'css'=>[
-    0 =>'layouts/page-center.css'
+    0 =>'/css/layouts/page-center.css'
   ],
   'pagetitle'=>':('
   ]
