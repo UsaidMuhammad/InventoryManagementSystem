@@ -103,6 +103,13 @@
             </ul>
         </li>
         @endif
+        @if ($permission['users'] == 1)
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-action-dashboard"></i> Users
+            </a>
+        </li>
+        @endif
         <!--<li class="bold">
             <a href="app-email.html" class="waves-effect waves-cyan">
                 <i class="mdi-communication-email"></i> Mailbox
