@@ -1,8 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-@include('includes.head',['css'=>['layouts/page-center.css'],'pagetitle'=>':('])
+<?php
+$arr = [
+  'css'=>[
+    0 =>'layouts/page-center.css'
+  ],
+  'pagetitle'=>':('
+  ]
+?>
+@include('includes.head',$arr)
 
 <body class="cyan">
   <!-- Start Page Loading -->
@@ -28,7 +35,7 @@
           <div class="content">
             <div class="row">
               <div id="site-layout-example-top" class="col s12">
-                <p class="flat-text-logo center white-text caption-uppercase">Sorry but this page is not available in your country.</p>
+                <p class="flat-text-logo center white-text caption-uppercase">Sorry but this page is not available in your reigon.</p>
               </div>
               <div id="site-layout-example-right" class="col s12 m12 l12">
                 <div class="row center">
