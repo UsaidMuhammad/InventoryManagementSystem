@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Session\SessionManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class DashboardController extends Controller
@@ -25,9 +26,9 @@ class DashboardController extends Controller
         $data = [
             'pagetitle' => 'Dashboard',
             'permission' => Session()->get('permission'),
-            'name' => \Auth::user()->name,
+            'name' => Auth::user()->name,
         ];
-        return view('dashboard',$data);;
+        return view('dashboard',$data);
     }
 
 
@@ -40,7 +41,7 @@ class DashboardController extends Controller
     private function permission()
     {
         if (!Session()->has('permission')) {
-            $permission = User::find(\Auth::user()->id)->details;
+            $permission = User::find(Auth::user()->id)->details;
             $permission_arr = [
                 'customer' => $permission->permission_customer,
                 'supplier' => $permission->permission_supplier,
