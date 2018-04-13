@@ -24,6 +24,13 @@ class CustomersController extends Controller
             'pagetitle' => 'Customers',
             'permission' => Session()->get('permission'),
             'name' => Auth::user()->name,
+            'js' => [
+                'plugins/data-tables/js/jquery.dataTables.min.js',
+                'plugins/data-tables/data-tables-script.js'
+            ],
+            'css' => [
+                '/js/plugins/data-tables/css/jquery.dataTables.min.css',
+            ]
         ];
         return view('customers.customers',$data);
     }
