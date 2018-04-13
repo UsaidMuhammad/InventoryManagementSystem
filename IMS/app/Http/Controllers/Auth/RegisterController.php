@@ -69,14 +69,25 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        $id = $create->id;
+        $this->createUserDetails($create);
+
+        return $create;
+
+    }
+
+    /**
+     * Create user details when a new user is created
+     * 
+     * @param \App\User $user
+     * @return null
+     */
+    private function createUserDetails($user)
+    {
+        $id = $user->id;
 
         $userDetails = new UserDetails;
         $userDetails->users_id = $id;
         $userDetails->save();
-
-        return $create;
-
     }
 
     //overrite default function
