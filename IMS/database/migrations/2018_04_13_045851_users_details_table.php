@@ -17,15 +17,15 @@ class UsersDetailsTable extends Migration
         Schema::create('users_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('users_id');
-            $table->boolean('permission_customer');
-            $table->boolean('permission_supplier');
-            $table->boolean('permission_product');
-            $table->boolean('permission_stocks');
-            $table->boolean('permission_sales');
-            $table->boolean('permission_payment');
-            $table->boolean('permission_report');
-            $table->boolean('permission_users');
-            $table->boolean('status');
+            $table->boolean('permission_customer')->default(0);
+            $table->boolean('permission_supplier')->default(0);
+            $table->boolean('permission_product')->default(0);
+            $table->boolean('permission_stocks')->default(0);
+            $table->boolean('permission_sales')->default(0);
+            $table->boolean('permission_payment')->default(0);
+            $table->boolean('permission_report')->default(0);
+            $table->boolean('permission_users')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
