@@ -23,7 +23,7 @@
   <link href="{{url('assets/')}}/css/custom/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">
   @if (isset($css))
       @foreach ($css as $item)
-        <link href="{{url('assets/')}}/css/{{$item}}" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="{{url('assets/').$item}}" type="text/css" rel="stylesheet" media="screen,projection">
       @endforeach
   @endif
   

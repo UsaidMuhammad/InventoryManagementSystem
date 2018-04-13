@@ -36,7 +36,7 @@ class ForgotPasswordController extends Controller
         $data = [
             'pagetitle' => 'Forgot Password',
             'css' => [
-                'layouts/page-center.css',
+                '/css/layouts/page-center.css',
             ],
         ];
         return view('auth.passwords.email', $data);

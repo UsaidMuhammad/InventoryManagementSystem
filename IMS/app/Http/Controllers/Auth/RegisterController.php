@@ -96,7 +96,7 @@ class RegisterController extends Controller
         $data = [
             'pagetitle' => 'Login',
             'css' => [
-                'layouts/page-center.css',
+                '/css/layouts/page-center.css',
             ],
         ];
         return view('auth.register', $data);

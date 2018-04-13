@@ -44,7 +44,7 @@ class ResetPasswordController extends Controller
         $data = [
             'pagetitle' => 'Reset Password',
             'css' => [
-                'layouts/page-center.css',
+                '/csslayouts/page-center.css',
             ],
             'token' => $token,
             'email' => $request->email
