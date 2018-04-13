@@ -28,35 +28,35 @@
         @if ($permission['customer'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Customer
+                <i class="mdi-social-people"></i> Customer
             </a>
         </li>
         @endif
         @if ($permission['supplier'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Supplier
+                <i class="mdi-action-shopping-cart"></i> Supplier
             </a>
         </li>
         @endif
         @if ($permission['product'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Product
+                <i class="mdi-action-wallet-giftcard"></i> Product
             </a>
         </li>
         @endif
         @if ($permission['stocks'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Stocks
+                <i class="mdi-action-trending-up"></i> Stocks
             </a>
         </li>
         @endif
         @if ($permission['sales'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Sales
+                <i class="mdi-editor-attach-money"></i> Sales
             </a>
         </li>
         @endif
@@ -65,7 +65,7 @@
             <ul class="collapsible collapsible-accordion">
                 <li class="bold">
                     <a class="collapsible-header waves-effect waves-cyan">
-                        <i class="mdi-action-view-carousel"></i> Payments</a>
+                        <i class="mdi-action-account-balance"></i> Payments</a>
                     <div class="collapsible-body">
                         <ul>
                             <li>
@@ -88,7 +88,7 @@
             <ul class="collapsible collapsible-accordion">
                 <li class="bold">
                     <a class="collapsible-header waves-effect waves-cyan">
-                        <i class="mdi-action-view-carousel"></i> Reports</a>
+                        <i class="mdi-action-assignment-turned-in"></i> Reports</a>
                     <div class="collapsible-body">
                         <ul>
                             <li>
@@ -106,7 +106,7 @@
         @if ($permission['users'] == 1)
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i> Users
+                <i class="mdi-social-person-add"></i> Users
             </a>
         </li>
         @endif
