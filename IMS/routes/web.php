@@ -30,7 +30,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'DashboardController@index')->name('home');
 
 //customer
-Route::get('/customers', '');
+Route::get('/customers', 'CustomersController@index');
+Route::resource('customers', 'CustomersController')->except(
+    'show'
+);
 
 Route::get('/', function () {
     return redirect()->route('login');
