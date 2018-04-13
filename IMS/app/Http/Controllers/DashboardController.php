@@ -12,11 +12,16 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
+    /**
+     * '/home' calls this route 
+     * 
+     * @param none
+     * @return view dashboard
+     */
     public function index()
-    {
-        // adds permission to Session 
-        $this->addPermission();
+    { 
+        $this->permission();
         $data = [
             'pagetitle' => 'Dashboard',
             'permission' => Session()->get('permission'),
@@ -25,7 +30,14 @@ class DashboardController extends Controller
         return view('dashboard',$data);;
     }
 
-    private function addPermission()
+
+    /**
+     * Checks if session has permission in it if not they adds to it
+     * 
+     * @param null
+     * @return null
+     */
+    private function permission()
     {
         if (!Session()->has('permission')) {
             $permission = User::find(\Auth::user()->id)->details;
