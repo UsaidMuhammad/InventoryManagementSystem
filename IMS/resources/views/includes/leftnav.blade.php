@@ -27,35 +27,35 @@
         </li>
         @if ($permission['customer'] == 1)
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-social-people"></i> Customer
+            <a href="{{url('/customers')}}" class="waves-effect waves-cyan">
+                <i class="mdi-social-people"></i> Customers
             </a>
         </li>
         @endif
         @if ($permission['supplier'] == 1)
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
+            <a href="{{url('/supplier')}}" class="waves-effect waves-cyan">
                 <i class="mdi-action-shopping-cart"></i> Supplier
             </a>
         </li>
         @endif
         @if ($permission['product'] == 1)
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
+            <a href="{{url('/product')}}" class="waves-effect waves-cyan">
                 <i class="mdi-action-wallet-giftcard"></i> Product
             </a>
         </li>
         @endif
         @if ($permission['stocks'] == 1)
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
+            <a href="{{url('/stocks')}}" class="waves-effect waves-cyan">
                 <i class="mdi-action-trending-up"></i> Stocks
             </a>
         </li>
         @endif
         @if ($permission['sales'] == 1)
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
+            <a href="{{url('/sales')}}" class="waves-effect waves-cyan">
                 <i class="mdi-editor-attach-money"></i> Sales
             </a>
         </li>
@@ -69,13 +69,13 @@
                     <div class="collapsible-body">
                         <ul>
                             <li>
-                                <a href="#">Pending</a>
+                                <a href="{{url('/pending')}}">Pending</a>
                             </li>
                             <li>
-                                <a href="#">OutStanding</a>
+                                <a href="{{url('/outstanding')}}">OutStanding</a>
                             </li>
                             <li>
-                                <a href="#">Paid</a>
+                                <a href="{{url('/paid')}}">Paid</a>
                             </li>
                         </ul>
                     </div>
@@ -92,10 +92,10 @@
                     <div class="collapsible-body">
                         <ul>
                             <li>
-                                <a href="#">Profit &amp; Loss</a>
+                                <a href="{{url('/profitloss')}}">Profit &amp; Loss</a>
                             </li>
                             <li>
-                                <a href="#">Sotck in-out</a>
+                                <a href="{{url('/stockinout')}}">Sotck in-out</a>
                             </li>
                         </ul>
                     </div>
@@ -105,7 +105,7 @@
         @endif
         @if ($permission['users'] == 1)
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
+            <a href="{{url('/users')}}" class="waves-effect waves-cyan">
                 <i class="mdi-social-person-add"></i> Users
             </a>
         </li>
