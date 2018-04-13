@@ -26,7 +26,11 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+//home
 Route::get('/home', 'DashboardController@index')->name('home');
+
+//customer
+Route::get('/customers', '');
 
 Route::get('/', function () {
     return redirect()->route('login');
