@@ -32,8 +32,9 @@ Route::get('/home', 'DashboardController@index')->name('home');
 //customer
 Route::get('/customers', 'CustomersController@index');
 Route::resource('customers', 'CustomersController')->except(
-    'show'
+    'show', 'destory'
 );
+Route::delete('/customers/delete', 'CustomersController@destory');
 
 Route::get('/', function () {
     return redirect()->route('login');
