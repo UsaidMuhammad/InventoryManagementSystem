@@ -1,3 +1,4 @@
+<?php //dd($customers)?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,16 +92,18 @@
                     </tfoot>
                  
                     <tbody>
+                        @foreach ($customers as $customer)
                         <tr>
-                            <td><input type="checkbox" id="test3" class="tick"><label for="test3"></label></td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
+                            <td><input type="checkbox" id="{{$customer->id}}" class="tick"><label for="{{$customer->id}}"></label></td>
+                            <td>{{$customer->customer_name}}</td>
+                            <td>{{$customer->customer_number}}</td>
+                            <td>{{$customer->customer_email}}</td>
+                            <td>{{$customer->status}}</td>
+                            <td>{{$customer->created_at}}</td>
+                            <td>{{$customer->updated_at}}</td>
                             <td><a href="/" class="btn waves-effect waves-light blue">Edit</a></td>
                         </tr>
+                        @endforeach
                     </tbody>
                   </table>
                   </form>
