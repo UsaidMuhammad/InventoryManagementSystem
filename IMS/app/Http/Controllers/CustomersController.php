@@ -44,7 +44,17 @@ class CustomersController extends Controller
      */
     public function create()
     {
+        $data = [
+            'pagetitle' => 'Customers',
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/jquery-validation/jquery.validate.min.js',
+                'plugins/jquery-validation/additional-methods.min.js'
+            ]
+        ];
         
+        return view('customers.create', $data);
     }
 
     /**
