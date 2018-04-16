@@ -65,7 +65,20 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'bail|required',
+            'email' => 'bail|required|email',
+            'number' => 'required|numeric'
+        ]);
+
+        $customer = new Customers;
+        $customer->customer_name = $request->name;
+        $customer->customer_email = $request->email;
+        $customer->customer_number = $request->number;
+
+        $customer->save();
+
+        return redirect('/customers');
     }
 
     /**

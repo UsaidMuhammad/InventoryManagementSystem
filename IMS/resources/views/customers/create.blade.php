@@ -63,6 +63,15 @@
         <div class="col s12 m12 l6">
           <div class="card-panel">
             <h4 class="header2">Add a New Customer</h4>
+            @if ($errors->any())
+            <div id="card-alert" class="card red">
+                <div class="card-content white-text">
+                  @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                  @endforeach
+                </div>
+            </div>
+            @endif
             {{Form::open(['url'=>'/customers','class'=>'formValidate','id'=>'formValidate'])}}
             <div class="row">
               <form class="col s12">
