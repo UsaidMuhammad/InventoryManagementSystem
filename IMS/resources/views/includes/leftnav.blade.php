@@ -21,7 +21,7 @@
             </div>
         </li>
         <li class="bold">
-            <a href="index.html" class="waves-effect waves-cyan">
+            <a href="/" class="waves-effect waves-cyan">
                 <i class="mdi-action-dashboard"></i> Dashboard
             </a>
         </li>
