@@ -34,7 +34,7 @@ class CustomersController extends Controller
             ],
             'customers' => Customers::get()
         ];
-        return view('customers.customers',$data);
+        return view('customers.index',$data);
     }
 
     /**
@@ -44,7 +44,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
