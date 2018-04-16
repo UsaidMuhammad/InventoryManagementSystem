@@ -18,7 +18,7 @@ class CustomersTable extends Migration
             $table->string('customer_name', 100);
             $table->string('customer_number', 15);
             $table->string('customer_email', 50);
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
