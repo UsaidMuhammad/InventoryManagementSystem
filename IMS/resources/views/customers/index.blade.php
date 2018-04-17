@@ -80,7 +80,7 @@
                  
                     <tfoot>
                         <tr>
-                            <th><input type="checkbox" id="test2" name="id[]" value="" class="parent_tick"><label for="test2"></label></th>
+                            <th><input type="checkbox" id="test2" class="parent_tick"><label for="test2"></label></th>
                             <th>Name</th>
                             <th>Number</th>
                             <th>Email</th>
@@ -94,7 +94,7 @@
                     <tbody>
                         @foreach ($customers as $customer)
                         <tr>
-                            <td><input type="checkbox" id="{{$customer->id}}" class="tick"><label for="{{$customer->id}}"></label></td>
+                            <td><input type="checkbox" id="{{$customer->id}}" name="id[]" value ="{{$customer->id}}"class="tick"><label for="{{$customer->id}}"></label></td>
                             <td>{{$customer->customer_name}}</td>
                             <td>{{$customer->customer_number}}</td>
                             <td>{{$customer->customer_email}}</td>
