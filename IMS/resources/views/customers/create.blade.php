@@ -106,6 +106,17 @@
                     <label for="number">Number</label>
                   </div>
                 </div>
+                <div class="row">
+                  <p>Status ?</p>
+                  <p>
+                    <input name="status" type="radio" id="enable" value="1" {{isset($customer_edit) && $customer_edit->status == 1 ? 'checked' : null}}/>
+                    <label for="enable">enable</label>
+                  </p>
+                  <p>
+                    <input name="status" type="radio" id="disable" value="0" {{isset($customer_edit) && $customer_edit->status == 0 ? 'checked' : null}}/>
+                    <label for="disable">disable</label>
+                  </p>
+                </div>
                 <div class="input-field col s12">
                     <button class="btn waves-effect waves-light right submit" type="submit" name="submit">Submit
                       <i class="mdi-content-send right"></i>

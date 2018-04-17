@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -13,7 +15,20 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'pagetitle' => 'Supplier',
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/data-tables/js/jquery.dataTables.min.js',
+                'plugins/data-tables/data-tables-script.js'
+            ],
+            'css' => [
+                '/js/plugins/data-tables/css/jquery.dataTables.min.css',
+            ],
+            'suppliers' => Supplier::get()
+        ];
+        return view('supplier.index',$data);
     }
 
     /**
@@ -45,7 +60,7 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+        //will not be used
     }
 
     /**
