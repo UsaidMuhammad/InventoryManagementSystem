@@ -41,7 +41,7 @@ Route::resource('customers', 'CustomersController')->except(
 Route::delete('/customers/delete', 'CustomersController@destory');
 
 //Supplier
-Route::resource('supplier', 'CustomersController')->except(
+Route::resource('supplier', 'SupplierController')->except(
     'show', 'destory'
 );
-Route::delete('/customers/delete', 'CustomersController@destory');
+Route::delete('/customers/delete', 'SupplierController@destory');
