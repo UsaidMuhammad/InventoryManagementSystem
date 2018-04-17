@@ -123,17 +123,32 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'bail|required',
+            'email' => 'bail|required|email',
+            'number' => 'required|numeric'
+        ]);
+
+        $customer = Customers::find($id);
+        $customer->customer_name = $request->name;
+        $customer->customer_email = $request->email;
+        $customer->customer_number = $request->number;
+
+        $customer->save();
+
+        return redirect('/customers');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  void
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Request  $request)
     {
-        
+        Customers::destroy($request->get('id'));
+
+        return redirect('/customers');    
     }
 }
