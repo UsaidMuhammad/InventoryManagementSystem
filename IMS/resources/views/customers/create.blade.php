@@ -49,9 +49,15 @@
                   <li>
                     <a href="{{url('/customers')}}">Customers</a>
                   </li>
-                  <li>
-                    <a href="{{url('/customers/create')}}">Add new</a>
-                  </li>
+                  @if (isset($customer_edit))
+                    <li>
+                      <a href="{{url('/customers'.$customer_edit->id.'/create')}}">Edit</a>
+                    </li>  
+                  @else
+                    <li>
+                      <a href="{{url('/customers/create')}}">Add new</a>
+                    </li>
+                  @endif
                 </ol>
               </div>
             </div>
@@ -72,27 +78,31 @@
                 </div>
             </div>
             @endif
+            @if (isset($customer_edit))
+            {{Form::open(['url'=>'/customers/'.$customer_edit->id,'class'=>'formValidate','id'=>'formValidate','method'=>'PUT'])}}
+            @else
             {{Form::open(['url'=>'/customers','class'=>'formValidate','id'=>'formValidate'])}}
+            @endif
             <div class="row">
               <form class="col s12">
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-action-account-circle prefix"></i>
-                    <input id="name" name="name" type="text" class="validate">
+                      <input id="name" name="name" type="text" class="validate" value="{{isset($customer_edit) ? $customer_edit->customer_name : null }}">
                     <label for="name">Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-communication-email prefix"></i>
-                    <input id="email" type="email" name="email" class="validate">
+                    <input id="email" type="email" name="email" class="validate" value="{{isset($customer_edit) ? $customer_edit->customer_email : null }}">
                     <label for="email">Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-action-settings-phone prefix"></i>
-                    <input id="number" name="number" type="text" class="validate">
+                    <input id="number" name="number" type="text" class="validate" value="{{isset($customer_edit) ? $customer_edit->customer_number : null }}">
                     <label for="number">Number</label>
                   </div>
                 </div>
