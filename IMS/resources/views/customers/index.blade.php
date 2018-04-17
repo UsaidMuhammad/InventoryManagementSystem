@@ -101,7 +101,7 @@
                             <td>{{$customer->status}}</td>
                             <td>{{$customer->created_at}}</td>
                             <td>{{$customer->updated_at}}</td>
-                            <td><a href="/" class="btn waves-effect waves-light blue">Edit</a></td>
+                            <td><a href="{{url('customers/'.$customer->id.'/edit')}}" class="btn waves-effect waves-light blue">Edit</a></td>
                         </tr>
                         @endforeach
                     </tbody>
