@@ -16,7 +16,7 @@ class SupplierTableSeeder extends Seeder
                 'name' => str_random(10),
                 'address' => str_random(50),
                 'number' => rand(92300000, 923999999),
-                'customer_email' => str_random(10).'@test.com',
+                'email' => str_random(10).'@test.com',
                 'status'=> '1',
                 'created_at' => new \DateTime,
                 'updated_at'=> new \Datetime, 
