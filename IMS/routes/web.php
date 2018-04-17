@@ -35,8 +35,13 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'DashboardController@index')->name('home');
 
 //customer
-Route::get('/customers', 'CustomersController@index');
 Route::resource('customers', 'CustomersController')->except(
+    'show', 'destory'
+);
+Route::delete('/customers/delete', 'CustomersController@destory');
+
+//Supplier
+Route::resource('supplier', 'CustomersController')->except(
     'show', 'destory'
 );
 Route::delete('/customers/delete', 'CustomersController@destory');
