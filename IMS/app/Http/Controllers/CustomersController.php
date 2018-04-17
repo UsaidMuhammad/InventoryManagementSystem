@@ -75,6 +75,7 @@ class CustomersController extends Controller
         $customer->customer_name = $request->name;
         $customer->customer_email = $request->email;
         $customer->customer_number = $request->number;
+        $customer->status = $request->status;
 
         $customer->save();
 
@@ -133,6 +134,7 @@ class CustomersController extends Controller
         $customer->customer_name = $request->name;
         $customer->customer_email = $request->email;
         $customer->customer_number = $request->number;
+        $customer->status = $request->status;
 
         $customer->save();
 
@@ -147,7 +149,7 @@ class CustomersController extends Controller
      */
     public function destroy(Request  $request)
     {
-        Customers::destroy($request->get('id'));
+        Customers::destroy($request->id);
 
         return redirect('/customers');    
     }
