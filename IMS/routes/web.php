@@ -11,6 +11,11 @@
 |
 */
 
+// redirect root to login
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -35,7 +40,3 @@ Route::resource('customers', 'CustomersController')->except(
     'show', 'destory'
 );
 Route::delete('/customers/delete', 'CustomersController@destory');
-
-Route::get('/', function () {
-    return redirect()->route('login');
-});
