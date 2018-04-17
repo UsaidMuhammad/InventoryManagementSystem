@@ -12,7 +12,7 @@ class SupplierTableSeeder extends Seeder
     public function run()
     {
         for ($i=0; $i < 51; $i++) { 
-            DB::table('customers')->insert([
+            DB::table('supplier')->insert([
                 'name' => str_random(10),
                 'address' => str_random(50),
                 'number' => rand(92300000, 923999999),
