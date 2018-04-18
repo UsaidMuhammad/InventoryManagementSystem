@@ -68,7 +68,8 @@ class CustomersController extends Controller
         $validateData = $request->validate([
             'name' => 'bail|required',
             'email' => 'bail|required|email',
-            'number' => 'required|numeric'
+            'number' => 'bail|required|numeric',
+            'status' => 'required'
         ]);
 
         $customer = new Customers;
