@@ -33,11 +33,6 @@
 
         <!--breadcrumbs start-->
         <div id="breadcrumbs-wrapper">
-          <!-- Search for small screen -->
-          <div class="header-search-wrapper grey hide-on-large-only">
-            <i class="mdi-action-search active"></i>
-            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
-          </div>
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
@@ -47,15 +42,15 @@
                     <a href="{{url('/home')}}">Dashboard</a>
                   </li>
                   <li>
-                    <a href="{{url('/customers')}}">Customers</a>
+                    <a href="{{url('/supplier')}}">Supplier</a>
                   </li>
-                  @if (isset($customer_edit))
+                  @if (isset($supplier_edit))
                     <li>
-                      <a href="{{url('/customers'.$customer_edit->id.'/create')}}">Edit</a>
+                      <a href="{{url('/supplier'.$supplier_edit->id.'/create')}}">Edit</a>
                     </li>  
                   @else
                     <li>
-                      <a href="{{url('/customers/create')}}">Add new</a>
+                      <a href="{{url('/supplier/create')}}">Add new</a>
                     </li>
                   @endif
                 </ol>
@@ -65,10 +60,10 @@
         </div>
         <!--breadcrumbs end-->
 
-        <!-- Form with validation for add a new Customer-->
+        <!-- Form with validation for add a new Supplier-->
         <div class="col s12 m12 l6">
           <div class="card-panel">
-            <h4 class="header2">Add a New Customer</h4>
+            <h4 class="header2">Add a New Supplier</h4>
             @if ($errors->any())
             <div id="card-alert" class="card red">
                 <div class="card-content white-text">
@@ -78,42 +73,49 @@
                 </div>
             </div>
             @endif
-            @if (isset($customer_edit))
-            {{Form::open(['url'=>'/customers/'.$customer_edit->id,'class'=>'formValidate','id'=>'formValidate','method'=>'PUT'])}}
+            @if (isset($supplier_edit))
+            {{Form::open(['url'=>'/supplier/'.$supplier_edit->id,'class'=>'formValidate','id'=>'formValidate','method'=>'PUT'])}}
             @else
-            {{Form::open(['url'=>'/customers','class'=>'formValidate','id'=>'formValidate'])}}
+            {{Form::open(['url'=>'/supplier','class'=>'formValidate','id'=>'formValidate'])}}
             @endif
             <div class="row">
               <form class="col s12">
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-action-account-circle prefix"></i>
-                      <input id="name" name="name" type="text" class="validate" value="{{isset($customer_edit) ? $customer_edit->customer_name : null }}">
+                      <input id="name" name="name" type="text" class="validate" value="{{isset($supplier_edit) ? $supplier_edit->name : null }}">
                     <label for="name">Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <i class="mdi-communication-email prefix"></i>
-                    <input id="email" type="email" name="email" class="validate" value="{{isset($customer_edit) ? $customer_edit->customer_email : null }}">
-                    <label for="email">Email</label>
+                    <i class="mdi-action-explore prefix"></i>
+                    <input id="address" name="address" type="text" class="validate" value="{{isset($supplier_edit) ? $supplier_edit->address : null }}">
+                    <label for="address">Address</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-action-settings-phone prefix"></i>
-                    <input id="number" name="number" type="text" class="validate" value="{{isset($customer_edit) ? $customer_edit->customer_number : null }}">
+                    <input id="number" name="number" type="text" class="validate" value="{{isset($supplier_edit) ? $supplier_edit->number : null }}">
                     <label for="number">Number</label>
                   </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s12">
+                      <i class="mdi-communication-email prefix"></i>
+                      <input id="email" type="email" name="email" class="validate" value="{{isset($supplier_edit) ? $supplier_edit->email : null }}">
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+                <div class="row">
                   <p>Status ?</p>
                   <p>
-                    <input name="status" type="radio" id="enable" value="1" {{isset($customer_edit) && $customer_edit->status == 1 ? 'checked' : null}}/>
+                    <input name="status" type="radio" id="enable" value="1" {{isset($supplier_edit) && $supplier_edit->status == 1 ? 'checked' : null}}/>
                     <label for="enable">enable</label>
                   </p>
                   <p>
-                    <input name="status" type="radio" id="disable" value="0" {{isset($customer_edit) && $customer_edit->status == 0 ? 'checked' : null}}/>
+                    <input name="status" type="radio" id="disable" value="0" {{isset($supplier_edit) && $supplier_edit->status == 0 ? 'checked' : null}}/>
                     <label for="disable">disable</label>
                   </p>
                 </div>
@@ -149,6 +151,9 @@
         name: {
           required: true,
           minlength: 3
+        },
+        address: {
+          required: true,
         },
         email: {
           required: true,
