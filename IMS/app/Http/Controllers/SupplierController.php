@@ -39,7 +39,7 @@ class SupplierController extends Controller
     public function create()
     {
         $data = [
-            'pagetitle' => 'Customers',
+            'pagetitle' => 'Supplier',
             'permission' => Session()->get('permission'),
             'name' => Auth::user()->name,
             'js' => [
@@ -64,7 +64,7 @@ class SupplierController extends Controller
             'address' => 'bail|required',
             'email' => 'bail|required|email',
             'number' => 'bail|required|numeric',
-            'status' => 'required'
+            'status' => 'required',
         ]);
 
         $supplier = new supplier;
@@ -98,7 +98,22 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $supplier = Supplier::find($id);
+        if (!$supplier) {
+            return redirect('404');
+        }
+        $data = [
+            'pagetitle' => 'Supplier',  
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/jquery-validation/jquery.validate.min.js',
+                'plugins/jquery-validation/additional-methods.min.js'
+            ],
+            'supplier_edit' => $supplier
+        ];
+        
+        return view('supplier.create', $data);
     }
 
     /**
@@ -110,17 +125,35 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'bail|required',
+            'address' => 'bail|required',
+            'email' => 'bail|required|email',
+            'number' => 'bail|required|numeric',
+            'status' => 'required',
+        ]);
+
+        $supplier = Supplier::find($id);
+        $supplier->name = $request->name;
+        $supplier->address = $request->address;
+        $supplier->email = $request->email;
+        $supplier->number = $request->number;
+        $supplier->status = $request->status;
+
+        $supplier->save();
+
+        return redirect('/supplier');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request  $request)
     {
-        //
+        Supplier::destroy($request->id);
+        return redirect('/supplier');
     }
 }
