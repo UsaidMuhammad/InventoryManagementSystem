@@ -132,7 +132,8 @@ class CustomersController extends Controller
         $validateData = $request->validate([
             'name' => 'bail|required',
             'email' => 'bail|required|email',
-            'number' => 'required|numeric'
+            'number' => 'required|numeric',
+            'status' => 'require'
         ]);
 
         $customer = Customers::find($id);
