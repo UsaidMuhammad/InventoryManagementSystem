@@ -102,6 +102,10 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
+        $customers = Customers::find($id);
+        if (!$customers) {
+            return redirect('404');
+        }
         $data = [
             'pagetitle' => 'Customers',  
             'permission' => Session()->get('permission'),
@@ -110,7 +114,7 @@ class CustomersController extends Controller
                 'plugins/jquery-validation/jquery.validate.min.js',
                 'plugins/jquery-validation/additional-methods.min.js'
             ],
-            'customer_edit' => Customers::find($id)
+            'customer_edit' => $customers
         ];
         
         return view('customers.create', $data);
