@@ -38,7 +38,17 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'pagetitle' => 'Customers',
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/jquery-validation/jquery.validate.min.js',
+                'plugins/jquery-validation/additional-methods.min.js'
+            ]
+        ];
+        
+        return view('supplier.create', $data);
     }
 
     /**
@@ -49,7 +59,24 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'bail|required',
+            'address' => 'bail|required',
+            'email' => 'bail|required|email',
+            'number' => 'bail|required|numeric',
+            'status' => 'required'
+        ]);
+
+        $supplier = new supplier;
+        $supplier->name = $request->name;
+        $supplier->address = $request->address;
+        $supplier->email = $request->email;
+        $supplier->number = $request->number;
+        $supplier->status = $request->status;
+
+        $supplier->save();
+
+        return redirect('/supplier');
     }
 
     /**
