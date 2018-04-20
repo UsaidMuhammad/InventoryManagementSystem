@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,20 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'pagetitle' => 'Product',
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/data-tables/js/jquery.dataTables.min.js',
+                'plugins/data-tables/data-tables-script.js'
+            ],
+            'css' => [
+                '/js/plugins/data-tables/css/jquery.dataTables.min.css',
+            ],
+            'products' => Product::get(),
+        ];
+        return view('product.index',$data);
     }
 
     /**
@@ -46,7 +60,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // will not be used
     }
 
     /**
