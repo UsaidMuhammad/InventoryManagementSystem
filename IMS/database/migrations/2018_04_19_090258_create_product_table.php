@@ -19,7 +19,7 @@ class CreateProductTable extends Migration
             $table->string('name', 100);
             $table->text('description');
             $table->bigInteger('price');
-            $table->boolean('statuss')->default(1);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
