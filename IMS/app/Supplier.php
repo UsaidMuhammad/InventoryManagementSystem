@@ -9,10 +9,10 @@ class Supplier extends Model
     protected $table = 'supplier';
 
     /**
-     * Get the supplier for the products.
+     * Get the products for the supplier.
      */
-    public function supplier()
+    public function product()
     {
-        return $this->hasOne('App\Supplier');
+        return $this->hasOne('App\Product', 'supplier_id', 'id');
     }
 }
