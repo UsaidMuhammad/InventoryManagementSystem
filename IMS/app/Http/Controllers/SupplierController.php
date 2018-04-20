@@ -93,15 +93,11 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Supplier $supplier
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Supplier $supplier)
     {
-        $supplier = Supplier::find($id);
-        if (!$supplier) {
-            return redirect('404');
-        }
         $data = [
             'pagetitle' => 'Supplier',  
             'permission' => Session()->get('permission'),
@@ -120,10 +116,10 @@ class SupplierController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Supplier $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Supplier $supplier)
     {
         $validateData = $request->validate([
             'name' => 'bail|required',
@@ -133,7 +129,6 @@ class SupplierController extends Controller
             'status' => 'required',
         ]);
 
-        $supplier = Supplier::find($id);
         $supplier->name = $request->name;
         $supplier->address = $request->address;
         $supplier->email = $request->email;

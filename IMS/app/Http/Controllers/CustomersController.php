@@ -97,15 +97,11 @@ class CustomersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Customers $customers
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customers $customers)
     {
-        $customers = Customers::find($id);
-        if (!$customers) {
-            return redirect('404');
-        }
         $data = [
             'pagetitle' => 'Customers',  
             'permission' => Session()->get('permission'),
@@ -124,10 +120,10 @@ class CustomersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Customers $customers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customers $customers)
     {
         $validateData = $request->validate([
             'name' => 'bail|required',
@@ -136,7 +132,6 @@ class CustomersController extends Controller
             'status' => 'require'
         ]);
 
-        $customer = Customers::find($id);
         $customer->customer_name = $request->name;
         $customer->customer_email = $request->email;
         $customer->customer_number = $request->number;
