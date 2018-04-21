@@ -71,7 +71,20 @@ class StocksController extends Controller
      */
     public function edit(Stocks $stocks)
     {
-        //
+        $data = [
+            'pagetitle' => 'Stocks',
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/data-tables/js/jquery.dataTables.min.js',
+                'plugins/data-tables/data-tables-script.js'
+            ],
+            'css' => [
+                '/js/plugins/data-tables/css/jquery.dataTables.min.css',
+            ],
+            'stocks' => $stocks
+        ];
+        return view('stocks.edit',$data);
     }
 
     /**
@@ -94,6 +107,6 @@ class StocksController extends Controller
      */
     public function destroy(Stocks $stocks)
     {
-        //
+        // will not be used
     }
 }
