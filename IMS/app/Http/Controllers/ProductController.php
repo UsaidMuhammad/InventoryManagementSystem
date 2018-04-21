@@ -100,7 +100,19 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $data = [
+            'pagetitle' => 'Product',  
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/jquery-validation/jquery.validate.min.js',
+                'plugins/jquery-validation/additional-methods.min.js'
+            ],
+            'product_edit' => $product,
+            'supplier' => Supplier::orderBy('name', 'asc')->get()
+        ];
+        
+        return view('product.create', $data);
     }
 
     /**
@@ -112,7 +124,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'bail|required',
+            'supplier' => 'bail|required',
+            'description' => 'bail|required',
+            'price' => 'bail|required|numeric',
+            'status' => 'required',
+        ]);
+
+        $product->name = $request->name;
+        $product->supplier_id = $request->supplier;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->status = $request->status;
+
+        $product->save();
+
+        return redirect('/product');
     }
 
     /**
@@ -123,6 +151,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        
     }
 }

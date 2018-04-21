@@ -1,4 +1,3 @@
-<?php //dd($customers)?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,9 +90,15 @@
                     <label>Supplier</label>
                     <select class="browser-default" name="supplier">
                       <option value="" disabled selected>Choose your Supplier</option>
-                      @foreach ($supplier as $supp)
-                      <option value="{{ $supp->id }}">{{ $supp->name }}</option>
-                      @endforeach
+                      @if(isset($product_edit))
+                        @foreach ($supplier as $supp)
+                        <option value="{{ $supp->id }}" {{ $supp->id == $product_edit->supplier_id ? 'selected' : null}} >{{ $supp->name }}</option>
+                        @endforeach
+                      @else
+                        @foreach ($supplier as $supp)
+                        <option value="{{ $supp->id }}">{{ $supp->name }}</option>
+                        @endforeach
+                      @endif
                     </select>
                   </div>
                 </div>
