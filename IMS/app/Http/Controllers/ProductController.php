@@ -99,6 +99,7 @@ class ProductController extends Controller
 
         $product->save();
 
+        // makes a stock for the resource
         $this->createStock($product);
 
         return redirect('/product');
