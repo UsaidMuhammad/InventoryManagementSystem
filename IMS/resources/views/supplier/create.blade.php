@@ -150,7 +150,6 @@
       rules: {
         name: {
           required: true,
-          minlength: 3
         },
         address: {
           required: true,

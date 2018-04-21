@@ -158,7 +158,6 @@
       rules: {
         name: {
           required: true,
-          minlength: 3
         },
         supplier: {
           required: true,
