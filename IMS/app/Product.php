@@ -15,4 +15,12 @@ class Product extends Model
     {
         return $this->hasOne('App\Supplier', 'id', 'supplier_id');
     }
+
+    /**
+     * Get the stocks for the products.
+     */
+    public function stocks()
+    {
+        return $this->hasOne('App\Stocks', 'id', 'product_id');
+    }
 }
