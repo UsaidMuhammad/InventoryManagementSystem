@@ -52,8 +52,7 @@ Route::resource('product', 'ProductController')->except(
 );
 Route::delete('/product/delete', 'ProductController@destory');
 
-//Stocks
-Route::resource('stocks', 'StocksController')->only([
-    'index', 'edit', 'update'
-]);
-Route::delete('/stocks/delete', 'StocksController@destory');
+//Using Manual define because resource was not working
+Route::get('stocks', 'StocksController@index'); 
+Route::get('stocks/{stocks}/edit', 'StocksController@edit'); 
+Route::put('stocks/{stocks}', 'StocksController@update'); 
