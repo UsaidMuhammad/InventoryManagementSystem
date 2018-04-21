@@ -21,6 +21,6 @@ class Product extends Model
      */
     public function stocks()
     {
-        return $this->hasOne('App\Stocks', 'id', 'product_id');
+        return $this->hasOne('App\Stocks', 'product_id', 'id');
     }
 }
