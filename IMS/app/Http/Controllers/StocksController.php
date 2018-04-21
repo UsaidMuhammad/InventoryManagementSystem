@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Stocks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StocksController extends Controller
 {
@@ -14,7 +15,20 @@ class StocksController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'pagetitle' => 'Stocks',
+            'permission' => Session()->get('permission'),
+            'name' => Auth::user()->name,
+            'js' => [
+                'plugins/data-tables/js/jquery.dataTables.min.js',
+                'plugins/data-tables/data-tables-script.js'
+            ],
+            'css' => [
+                '/js/plugins/data-tables/css/jquery.dataTables.min.css',
+            ],
+            'stocks' => Stocks::get(),
+        ];
+        return view('stocks.index',$data);
     }
 
     /**
