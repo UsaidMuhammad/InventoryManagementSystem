@@ -146,11 +146,12 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        
+        Product::destroy($request->id);
+        return redirect('/product');
     }
 }
