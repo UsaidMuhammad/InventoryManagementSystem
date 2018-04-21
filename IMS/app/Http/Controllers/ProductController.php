@@ -4,11 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Supplier;
+use App\Stocks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+
+    /**
+     * Init stock as soon as a product is added
+     * 
+     * @param App\Product $product
+     * @return void
+     */
+
+    private function createStock($product)
+    {
+        $stock = new Stocks;
+
+        $stock->product_id = $product->id;
+        $stock->available = 0;
+        $stock->required = 0;
+        $stock->status = 1;
+
+        $stock->save();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -77,6 +98,8 @@ class ProductController extends Controller
         $product->status = $request->status;
 
         $product->save();
+
+        $this->createStock($product);
 
         return redirect('/product');
     }
