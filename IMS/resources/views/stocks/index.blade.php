@@ -1,6 +1,6 @@
 <?php 
-  //foreach ($products as $product) {
-  //  dd($product->supplier->name);
+  //foreach ($stocks as $stock) {
+  //  dd($stock->product->name);
   //}
 ?>
 <!DOCTYPE html>
@@ -58,49 +58,38 @@
             
             <!--DataTables example-->
             <div id="table-datatables">
-            <a href="/product/create" class="btn waves-effect waves-light yellow left ">Add New</a>
-            {{Form::open(["url"=>"/product/delete","method"=>"DELETE"])}}
-            <input type="submit" value="delete" class="btn waves-effect waves-light red right">
+            <form>
               <div class="row">
                 <div class="col s12 m12 l12">
                   <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" id="test1" class="parent_tick"><label for="test1"></label></th>
-                            <th>Name</th>
-                            <th>Supplier</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Created</th>
-                            <th>Updated</th>
+                            <th>Product Name</th>
+                            <th>Available</th>
+                            <th>Threshold</th>
+                            <th>Required</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
                  
                     <tfoot>
                         <tr>
-                            <th><input type="checkbox" id="test2" class="parent_tick"><label for="test2"></label></th>
-                            <th>Name</th>
-                            <th>Supplier</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Created</th>
-                            <th>Updated</th>
+                            <th>Product Name</th>
+                            <th>Available</th>
+                            <th>Threshold</th>
+                            <th>Required</th>
                             <th>Edit</th>
                         </tr>
                     </tfoot>
                  
                     <tbody>
-                        @foreach ($products as $product)
+                        @foreach ($stocks as $stock)
                         <tr>
-                            <td><input type="checkbox" id="{{$product->id}}" name="id[]" value ="{{$product->id}}"class="tick"><label for="{{$product->id}}"></label></td>
-                            <td>{{$product->name}}</td>
-                            <td>{{$product->supplier->name}}</td>
-                            <td>{{$product->price}}</td>
-                            <td>{{$product->status}}</td>
-                            <td>{{$product->created_at}}</td>
-                            <td>{{$product->updated_at}}</td>
-                            <td><a href="{{url('product/'.$product->id.'/edit')}}" class="btn waves-effect waves-light blue">Edit</a></td>
+                            <td>{{$stock->product->name}}</td>
+                            <td>{{$stock->available}}</td>
+                            <td>{{$stock->threshold}}</td>
+                            <td>{{$stock->required}}</td>
+                            <td><a href="{{url('stocks/'.$stock->id.'/edit')}}" class="btn waves-effect waves-light blue">Edit</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -140,22 +129,6 @@
                 },100);
             });
 
-            //select all checkboxes
-            $(".parent_tick").change(function(){  //"select all" change 
-            $(".tick").prop('checked', $(this).prop("checked")); //change all ".tick" checked status
-            });
-
-            //".tick" change 
-            $('.tick').change(function(){ 
-            //uncheck "select all", if one of the listed checkbox item is unchecked
-            if(false == $(this).prop("checked")){ //if this item is unchecked
-                $(".parent_tick").prop('checked', false); //change "select all" checked status to false
-            }
-            //check "select all" if all checkbox items are checked
-            if ($('.tick:checked').length == $('.tick').length ){
-                $(".parent_tick").prop('checked', true);
-            }
-            });
         });
     </script>
 </body>
