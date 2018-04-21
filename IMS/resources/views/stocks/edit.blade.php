@@ -41,17 +41,11 @@
                     <a href="{{url('/home')}}">Dashboard</a>
                   </li>
                   <li>
-                    <a href="{{url('/product')}}">product</a>
+                    <a href="{{url('/stocks')}}">stocks</a>
                   </li>
-                  @if (isset($product_edit))
                     <li>
-                      <a href="{{url('/product'.$product_edit->id.'/create')}}">Edit</a>
-                    </li>  
-                  @else
-                    <li>
-                      <a href="{{url('/product/create')}}">Add new</a>
+                      <a href="{{url('/stocks'.$stocks->id.'/create')}}">Edit</a>
                     </li>
-                  @endif
                 </ol>
               </div>
             </div>
@@ -59,10 +53,10 @@
         </div>
         <!--breadcrumbs end-->
 
-        <!-- Form with validation for add a new product-->
+        <!-- Form with validation for add a new stocks-->
         <div class="col s12 m12 l6">
           <div class="card-panel">
-            <h4 class="header2">Add a New product</h4>
+            <h4 class="header2">Edit stocks</h4>
             @if ($errors->any())
             <div id="card-alert" class="card red">
                 <div class="card-content white-text">
@@ -72,60 +66,28 @@
                 </div>
             </div>
             @endif
-            @if (isset($product_edit))
-            {{Form::open(['url'=>'/product/'.$product_edit->id,'class'=>'formValidate','id'=>'formValidate','method'=>'PUT'])}}
-            @else
-            {{Form::open(['url'=>'/product','class'=>'formValidate','id'=>'formValidate'])}}
-            @endif
+            {{Form::open(['url'=>'/stocks/'.$stocks->id,'class'=>'formValidate','id'=>'formValidate','method'=>'PUT'])}}
             <div class="row">
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-action-account-circle prefix"></i>
-                      <input id="name" name="name" type="text" class="validate" value="{{isset($product_edit) ? $product_edit->name : null }}">
-                    <label for="name">Name</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    <label>Supplier</label>
-                    <select class="browser-default" name="supplier">
-                      <option value="" disabled selected>Choose your Supplier</option>
-                      @if(isset($product_edit))
-                        @foreach ($supplier as $supp)
-                        <option value="{{ $supp->id }}" {{ $supp->id == $product_edit->supplier_id ? 'selected' : null}} >{{ $supp->name }}</option>
-                        @endforeach
-                      @else
-                        @foreach ($supplier as $supp)
-                        <option value="{{ $supp->id }}">{{ $supp->name }}</option>
-                        @endforeach
-                      @endif
-                    </select>
+                      <input id="available" name="available" type="text" class="validate" value="{{$stocks->available}}">
+                    <label for="available">Available</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                      <i class="mdi-action-announcement prefix"></i>
-                      <textarea id="description" name="description" class="materialize-textarea">{{isset($product_edit) ? $product_edit->description : null }}</textarea>
-                      <label for="description">Description</label>
+                    <i class="mdi-action-account-circle prefix"></i>
+                      <input id="threshold" name="threshold" type="text" class="validate" value="{{$stocks->threshold}}">
+                    <label for="threshold">Threshold</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="mdi-editor-attach-money prefix"></i>
-                    <input id="price" name="price" type="text" class="validate" value="{{isset($product_edit) ? $product_edit->price : null }}">
-                    <label for="price">price</label>
+                    <input id="required" name="required" type="text" class="validate" value="{{$stocks->required}}">
+                    <label for="required">required</label>
                   </div>
-                </div>
-                <div class="row">
-                  <p>Status ?</p>
-                  <p>
-                    <input name="status" type="radio" id="enable" value="1" {{isset($product_edit) && $product_edit->status == 1 ? 'checked' : null}}/>
-                    <label for="enable">enable</label>
-                  </p>
-                  <p>
-                    <input name="status" type="radio" id="disable" value="0" {{isset($product_edit) && $product_edit->status == 0 ? 'checked' : null}}/>
-                    <label for="disable">disable</label>
-                  </p>
                 </div>
                 <div class="input-field col s12">
                     <button class="btn waves-effect waves-light right submit" type="submit" name="submit">Submit
@@ -158,14 +120,13 @@
       rules: {
         name: {
           required: true,
+          digits: true
         },
-        supplier: {
+        threshold: {
           required: true,
+          digits: true
         },
-        description: {
-          required: true,
-        },
-        price: {
+        required: {
           required: true,
           digits: true
         }
