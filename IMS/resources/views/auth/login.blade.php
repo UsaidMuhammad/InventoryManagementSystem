@@ -23,17 +23,12 @@
             <p class="center login-form-text">Login</p>
           </div>
         </div>
-        @if ($errors->has('email'))
+        @if ($errors->any())
         <div id="card-alert" class="card red">
             <div class="card-content white-text">
-              <p>{{ $errors->first('email') }}</p>
-            </div>
-        </div>
-        @endif
-        @if ($errors->has('password'))
-        <div id="card-alert" class="card red">
-            <div class="card-content white-text">
-              <p>{{ $errors->first('password') }}</p>
+              @foreach ($errors->all() as $error)
+                <p>{{ $error}}</p>
+              @endforeach
             </div>
         </div>
         @endif
@@ -59,6 +54,11 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
+            {!! NoCaptcha::display() !!}
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
               <button type="submit" class="btn waves-effect waves-light col s12">
                   Login
               </button>
@@ -80,7 +80,7 @@
 
 
   @include('includes.foot')
-
+  {!! NoCaptcha::renderJs() !!}
 </body>
 
 </html>

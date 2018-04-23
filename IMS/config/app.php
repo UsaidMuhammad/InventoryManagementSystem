@@ -180,6 +180,11 @@ return [
          * Laravel Collective Form
          */
         Collective\Html\HtmlServiceProvider::class,
+        /**
+         * no-captcha by https://github.com/anhskohbo/no-captcha
+         */
+
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
 
     ],
@@ -232,6 +237,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
 
     ],
 
