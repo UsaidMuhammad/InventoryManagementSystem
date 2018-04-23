@@ -96,7 +96,19 @@ class StocksController extends Controller
      */
     public function update(Request $request, Stocks $stocks)
     {
-        //
+        $validateData = $request->validate([
+            'available' => 'bail|required|numeric',
+            'required' => 'bail|required|numeric',
+            'threshold' => 'bail|required|numeric',
+        ]);
+
+        $stocks->available = $request->available;
+        $stocks->required = $request->required;
+        $stocks->threshold = $request->threshold;
+
+        $stocks->save();
+
+        return redirect('stocks');
     }
 
     /**
